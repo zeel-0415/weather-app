@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+}
+
+.light-mode {
+  background: linear-gradient(135deg, #87ceeb, #e0f6ff);
+  color: #1a1a1a;
+}
+
+body.clear {
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+}
+
+body.clouds {
+  background: linear-gradient(135deg, #b0bec5, #78909c);
+}
+
+body.rain {
+  background: linear-gradient(135deg, #0288d1, #01579b);
+}
+
+body.thunderstorm {
+  background: linear-gradient(135deg, #37474f, #263238);
+}
+
+body.snow {
+  background: linear-gradient(135deg, #e0f7fa, #b0bec5);
+}
+
+.app-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  padding: 1.5rem;
+  z-index: 1;
+  margin: 1rem;
+}
+
+.weather-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.light-mode .content {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #0a84ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  animation: fadeIn 1s ease-out;
+}
+
+form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(0, 132, 255, 0.5);
+}
+
+button {
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: #0a84ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s, background 0.3s;
+  animation: slideUp 0.5s ease-out;
+}
+
+button:hover {
+  background: #005bb5;
+  transform: scale(1.05);
+}
+
+.weather-card {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.weather-card img {
+  width: 100px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  animation: bounceIn 1s ease-out;
+}
+
+.toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+#forecast {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+#forecast p {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  input, button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .weather-card img {
+    width: 80px;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+}
